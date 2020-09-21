@@ -13,15 +13,20 @@ ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 def home_view(request, *args, **kwargs):
     return render(request, "pages/home.html", context={}, status=200)
 
-def tweet_create_view(request, *args, **kwards):
+def tweet_create_view(request, *args, **kwargs):
     form = TweetForm(request.POST or None)
     next_url = request.POST.get("next") or None
     if form.is_valid():
         obj = form.save(commit=False)
         obj.save()
-        form = TweetForm()
-        if next_url != None and url_has_allowed_host_and_scheme(next_url, ALLOWED_HOSTS):
-            return redirect(next_url)
+        if request.is_ajax():
+            return JsonResponse(obj.serialize(), status=201) # 201 == created items
+        # if next_url != None and url_has_allowed_host_and_scheme(next_url, ALLOWED_HOSTS):
+        #     return redirect(next_url)
+        # form = TweetForm()
+    if form.errors:
+        if request.is_ajax():
+            return JsonResponse(form.errors, status=400)
     return render(request, 'components/form.html', context={"form": form})
 
 def tweet_list_view(request, *args, **kwargs):
@@ -31,7 +36,7 @@ def tweet_list_view(request, *args, **kwargs):
     return Json data
     """
     qs = Tweet.objects.all()
-    tweets_list = [{"id": x.id, "content": x.content, "likes": random.randint(0, 155)} for x in qs]
+    tweets_list = [x.serialize() for x in qs]
     data = {
         "isUser": False,
         "response": tweets_list,
