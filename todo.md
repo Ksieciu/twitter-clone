@@ -11,9 +11,10 @@
         -> User + who they follow
 
 2. Tweets
-    -> Creating
-        -> Text
-        -> Image
+    -> User Permissions
+        -> Creating
+            -> Text
+            -> Image
     -> Delete
     -> Retweeting
     -> Like
