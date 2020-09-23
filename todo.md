@@ -17,6 +17,8 @@
             -> Image
         -> Delete
         -> Retweeting
+            -> Read only serializer
+            -> Create only serializer
         -> Liking system
 
 3. Following/Followers
