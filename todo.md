@@ -15,9 +15,9 @@
         -> Creating
             -> Text
             -> Image
-    -> Delete
-    -> Retweeting
-    -> Like
+        -> Delete
+        -> Retweeting
+        -> Liking system
 
 3. Following/Followers
 
