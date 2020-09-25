@@ -3,13 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {TweetsComponent} from './tweets'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// const rootEl = document.getElementById("root")
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   rootEl
+// );
+
+const tweetsEl = document.getElementById("twitterclone")
+if (tweetsEl){
+  ReactDOM.render(
+    <React.StrictMode>
+      <TweetsComponent />
+    </React.StrictMode>,
+    tweetsEl
+  );
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
