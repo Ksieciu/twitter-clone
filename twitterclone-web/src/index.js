@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {TweetsComponent} from './tweets'
 
@@ -13,14 +13,10 @@ import {TweetsComponent} from './tweets'
 //   rootEl
 // );
 
+const e = React.createElement
 const tweetsEl = document.getElementById("twitterclone")
 if (tweetsEl){
-  ReactDOM.render(
-    <React.StrictMode>
-      <TweetsComponent />
-    </React.StrictMode>,
-    tweetsEl
-  );
+  ReactDOM.render(e(TweetsComponent, tweetsEl.dataset), tweetsEl);
 }
 
 // If you want your app to work offline and load faster, you can change
