@@ -16,7 +16,8 @@ import {TweetsComponent} from './tweets'
 const e = React.createElement
 const tweetsEl = document.getElementById("twitterclone")
 if (tweetsEl){
-  ReactDOM.render(e(TweetsComponent, tweetsEl.dataset), tweetsEl);
+  ReactDOM.render(
+    e(TweetsComponent, tweetsEl.dataset), tweetsEl);
 }
 
 // If you want your app to work offline and load faster, you can change
