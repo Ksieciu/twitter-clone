@@ -11,6 +11,7 @@ export function ActionBtn(props) {
 
     const handleActionBackendEvent = (response, status) => {
         console.log(response, status)
+        console.log(tweet.author.username)
         if ((status === 200 || status === 201) && didPerformAction){
             didPerformAction(response, status)
         }

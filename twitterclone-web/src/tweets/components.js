@@ -6,19 +6,16 @@ import {Tweet} from './detail'
 
 
 export function TweetsComponent(props) {
-    const {username} = props
     const [newTweets, setNewTweets] = useState([])
     const canTweet = props.canTweet === "false" ? false : true
-
     const handleNewTweet = (newTweet) =>{
-        let tempNewTweets = [...newTweets]
-        tempNewTweets.unshift(newTweet)
-        setNewTweets(tempNewTweets)
-      }
-
+      let tempNewTweets = [...newTweets]
+      tempNewTweets.unshift(newTweet)
+      setNewTweets(tempNewTweets)
+    }
     return <div className={props.className}>
             {canTweet === true && <TweetCreate didTweet={handleNewTweet} className='col-12 mb-3' />}
-        <TweetsList newTweets={newTweets} username={username} />
+          <TweetsList newTweets={newTweets} {...props} />
     </div>
 }
   

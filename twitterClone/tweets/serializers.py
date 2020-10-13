@@ -45,14 +45,14 @@ class TweetCreateSerializer(serializers.ModelSerializer):
 
 
 class TweetSerializer(serializers.ModelSerializer):
-    author = PublicProfileSerializer(source='user.profile', read_only=True)
+    user = PublicProfileSerializer(source='user.profile', read_only=True)
     likes = serializers.SerializerMethodField(read_only=True)
     parent = TweetCreateSerializer(read_only=True)
     # is_retweet = serializers.SerializerMethodField(read_only=True) - no need to call, when is a class property
 
     class Meta:
         model = Tweet
-        fields = ['author', 'id', 'content', 'likes', 'is_retweet', 'parent']
+        fields = ['user', 'id', 'content', 'likes', 'is_retweet', 'parent', 'timestamp']
     
     def get_likes(self, obj):
         return obj.likes.count()
