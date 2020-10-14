@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {TweetsComponent, TweetDetailComponent} from './tweets'
+import {FeedComponent, TweetsComponent, TweetDetailComponent} from './tweets'
+import {ProfileBadgeComponent} from './profiles'
 
 // const rootEl = document.getElementById("root")
 // ReactDOM.render(
@@ -20,11 +21,25 @@ if (tweetsEl){
     e(TweetsComponent, tweetsEl.dataset), tweetsEl);
 }
 
+const tweetFeedEl = document.getElementById("twitterclone-feed")
+if (tweetFeedEl){
+  ReactDOM.render(
+    e(FeedComponent, tweetFeedEl.dataset), tweetFeedEl);
+}
+
 const tweetDetailElements = document.querySelectorAll(".twitterclone-detail")
 
 tweetDetailElements.forEach(container=>{
   ReactDOM.render(
     e(TweetDetailComponent, container.dataset),
+    container);
+})
+
+const userProfileBadgeElements = document.querySelectorAll(".twitterclone-profile-badge")
+
+userProfileBadgeElements.forEach(container=>{
+  ReactDOM.render(
+    e(ProfileBadgeComponent, container.dataset),
     container);
 })
 
